@@ -6,8 +6,8 @@ data class Post(
     val created_by: Int = 2,
     val date: Int = 2,
     val text: String = "Hallo, kotlin",
-    val friends_only: Boolean = false,
-    val can_delete: Boolean = false
+    val friends_only: Boolean ?=false,
+    val can_delete: Boolean?=true
 ) {}
 
 object likes {
