@@ -6,10 +6,27 @@ data class Post(
     val created_by: Int = 2,
     val date: Int = 2,
     val text: String = "Hallo, kotlin",
+    val attachments: Array  <Attachment> = emptyArray(),
     val friends_only: Boolean ?=false,
     val can_delete: Boolean?=true
 ) {}
+//data class attachmentPost():Array
+ class AttachmentPhoto(override var id:Int, override val type:String="Photo", override val title:String ):Attachment{
 
+}
+class AttachmentVideo(override var id:Int, override val type:String="Video", override val title:String ):Attachment{
+
+}
+class AttachmentAudio(override var id:Int, override val type:String="Audio", override val title:String ):Attachment{
+
+}
+class AttachmentFile(override var id:Int, override val type:String="File", override val title:String ):Attachment{
+
+}
+class AttachmentUrl(override var id:Int, override val type:String="Url", override val title:String ):Attachment{
+
+}
+//class Photo(override var id: Int = 1, override override val type: String): AttachmentPhoto
 object likes {
     fun addLikes(post: Post): Post {
         val likeAdd = post.copy(likes = post.likes + 1)
@@ -49,7 +66,7 @@ object wallService {
 }
 
 fun main(args: Array<String>) {
-    var post = Post(1, 0)
+    var post = Post(1, 0, attachments = emptyArray())
 
     println(post)
     post = likes.addLikes(post)
@@ -64,7 +81,7 @@ fun main(args: Array<String>) {
     println("Последний id " + wallService.postsLastId())
 
     //проверка update
-    post = Post(2, 5)
+    post = Post(2, 5, attachments = emptyArray())
     println("обновление поста= " + wallService.updatePost(post))
 
 }
